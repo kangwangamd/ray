@@ -97,7 +97,7 @@ class SGLangEngineConfig(BaseModelExtended):
 
     @classmethod
     def from_llm_config(cls, llm_config: LLMConfig) -> "SGLangEngineConfig":
-        """Converts the LLMConfig to a VLLMEngineConfig."""
+        """Converts the LLMConfig to a SGLangEngineConfig."""
         # Set up the model downloading configuration.
         hf_model_id, mirror_config = None, None
         if llm_config.model_loading_config.model_source is None:
@@ -236,7 +236,7 @@ class SGLangSamplingParams(SamplingParams):
     @classmethod
     def _get_model_validate_kwargs(cls, prompt: Prompt) -> Dict[str, Any]:
         """
-        Extend the base class's `_get_model_validate_kwargs` to include vllm-specific parameters.
+        Extend the base class's `_get_model_validate_kwargs` to include sglang-specific parameters.
         """
         generate_kwargs = super()._get_model_validate_kwargs(prompt)
         if (
